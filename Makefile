@@ -38,6 +38,9 @@ define execute_in_env
 endef
 ################################################################################################################
 # Set Up
+## install pg8000
+pg8000:
+	$(call execute_in_env, $(PIP) install pg8000)
 ## Install flake8
 flake:
 	$(call execute_in_env, $(PIP) install flake8)
@@ -51,11 +54,10 @@ set-data:
 	$(call execute_in_env, psql -f store_data/00-setup-db.sql)
 
 # Run the flake8 code check
-# run-flake:
-# 	$(call execute_in_env, flake8 \
-# 	./src/coder.py \
-# 	./test/test_coder.py \
-# 	./src/build_a_ghost.py )	
+run-flake:
+	$(call execute_in_env, flake8 \
+	./src/query_board.py \
+	./test/test_query_board.py )	
 ## Run a single test
 unit-test:
 	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest -v ${test_run})
@@ -65,4 +67,9 @@ unit-tests:
 	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest -v)
 
 ## Run all checks
-run-checks: unit-tests
+run-checks: unit-tests run-flake 
+			
+
+## print requirement
+print-req:
+	$(call execute_in_env, ${PIP} freeze > requirements.txt)

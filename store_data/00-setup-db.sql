@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS nc_flix;
+DROP DATABASE IF EXISTS business_data;
 
-CREATE DATABASE buissiness_data;
+CREATE DATABASE business_data;
 
-\c buissiness_data
+\c business_data
 
 CREATE TABLE stores (
     store_id SERIAL PRIMARY KEY,

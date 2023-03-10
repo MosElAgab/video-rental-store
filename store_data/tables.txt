@@ -1,0 +1,90 @@
+You are now connected to database "business_data" as user "yangzhang".
+ customer_id | customer_name | date_of_birth |  location  
+-------------+---------------+---------------+------------
+           1 | David         | 1992-12-30    | Leeds
+           2 | Joe           | 1989-06-21    | Liverpool
+           3 | Verity        | 1997-01-07    | Leicester
+           4 | Cat           | 1985-11-02    | Manchester
+           5 | Alex          | 2001-06-24    | Manchester
+           6 | Duncan        | 1994-01-19    | Manchester
+           7 | Jersey        | 2022-05-01    | Leicester
+           8 | Paul C        | 1991-03-28    | Bolton
+           9 | Haz           | 1992-07-02    | Bolton
+(9 rows)
+
+ movie_id |               title                | release_date | rating | cost | classification 
+----------+------------------------------------+--------------+--------+------+----------------
+        1 | Ghostbusters II                    | 1989-12-01   |        | 1.50 | U
+        2 | The Breakfast Club                 | 1985-06-07   |      3 | 2.00 | 12
+        3 | Todo Sobre Mi Madre                | 2015-08-15   |      5 | 1.25 | 12
+        4 | The Lion King II: Simba's Pride    | 1998-10-26   |      1 | 1.50 | U
+        5 | The Care Bears Movie               | 1985-08-14   |     10 | 1.00 | 
+        6 | Tron                               | 1982-10-21   |        | 2.00 | 15
+        7 | Highlander                         | 1986-08-29   |      3 | 1.00 | 15
+        8 | Cleopatra                          | 1963-07-31   |      6 | 1.00 | U
+        9 | Catch Me If You Can                | 2003-01-27   |      7 | 2.00 | 15
+       10 | Taxi Driver                        | 1976-08-19   |        | 1.00 | 15
+       11 | The Princess Switch                | 2018-11-16   |        | 1.00 | 
+       12 | Girl, Interrupted                  | 2000-03-24   |      8 | 2.00 | 12
+       13 | The Fellowship of the Ring         | 2001-12-19   |      9 | 2.50 | 12
+       14 | Episode I - The Phantom Menace     | 1999-05-19   |      7 | 1.50 | 
+       15 | Episode IV - A New Hope            | 1977-05-25   |     10 | 2.25 | 12
+       16 | Episode IX - The Rise of Skywalker | 2019-12-20   |      3 | 1.25 | 15
+       17 | Back to the Future                 | 1985-07-03   |     10 | 2.50 | U
+       18 | Back to the Future Part II         | 1989-11-22   |        | 1.75 | U
+       19 | The Godfather                      | 1972-03-14   |     10 | 1.50 | 18
+       20 | Raiders of the Lost Ark            | 1981-06-12   |      9 | 2.25 | 12
+       21 | Pulp Fiction                       | 1994-05-21   |      5 | 2.00 | 
+       22 | Toy Story                          | 1995-11-19   |     10 | 1.50 | U
+       23 | Groundhog Day                      | 1993-02-12   |      7 | 1.50 | U
+       24 | A Fish Called Wanda                | 1988-07-07   |      7 | 1.50 | 
+       25 | Independance Day                   | 1996-07-03   |      7 | 1.00 | 15
+(25 rows)
+
+ stock_id | store_id | movie_id 
+----------+----------+----------
+        1 |        1 |       22
+        2 |        1 |       22
+        3 |        1 |       21
+        4 |        1 |        7
+        5 |        1 |        7
+        6 |        1 |        7
+        7 |        1 |       15
+        8 |        1 |       15
+        9 |        1 |       16
+       10 |        1 |       16
+       11 |        2 |       22
+       12 |        2 |       17
+       13 |        2 |       17
+       14 |        2 |       18
+       15 |        2 |       18
+       16 |        2 |        9
+       17 |        2 |        9
+       18 |        2 |        9
+       19 |        2 |        9
+       20 |        2 |       10
+       21 |        3 |       12
+       22 |        3 |       21
+       23 |        3 |       21
+       24 |        3 |       21
+       25 |        3 |        5
+       26 |        4 |       14
+       27 |        4 |       14
+       28 |        4 |       14
+       29 |        4 |       14
+       30 |        4 |       14
+       31 |        4 |       14
+       32 |        4 |       15
+       33 |        4 |       15
+       34 |        4 |       13
+       35 |        4 |       16
+(35 rows)
+
+ store_id |    city    
+----------+------------
+        1 | Leeds
+        2 | Manchester
+        3 | Newcastle
+        4 | Birmingham
+(4 rows)
+
