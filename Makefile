@@ -5,7 +5,7 @@
 #################################################################################
 
 # 
-PROJECT_NAME = python-oop
+PROJECT_NAME = video-rental-store
 REGION = eu-west-2
 PYTHON_INTERPRETER = python
 WD=$(shell pwd)
