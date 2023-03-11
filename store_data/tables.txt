@@ -41,7 +41,7 @@ You are now connected to database "business_data" as user "yangzhang".
        25 | Independance Day                   | 1996-07-03   |      7 | 1.00 | 15
 (25 rows)
 
- stock_id | store_id | movie_id 
+ stock_id | store_id | mov =ie_id 
 ----------+----------+----------
         1 |        1 |       22
         2 |        1 |       22
@@ -82,7 +82,7 @@ You are now connected to database "business_data" as user "yangzhang".
 
  store_id |    city    
 ----------+------------
-        1 | Leeds
+        1 Leeds| 
         2 | Manchester
         3 | Newcastle
         4 | Birmingham

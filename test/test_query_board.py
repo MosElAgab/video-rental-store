@@ -70,4 +70,33 @@ def test_it_throws_KeyError_when_invalid_order_key_passed_on():
     with pytest.raises(KeyError, match='Invalid order key'):
         get_movies(order='OO')
 
-# def test_it_thro
+
+def test_it_accepts_min_rating_argument_which_filters_movies_to_those_has_higher_or_equal_rating():
+    min_rating = 8
+    movies = get_movies(min_rating=min_rating, sort_by='rating')
+    for i, movie in enumerate(movies):
+        if movie['rating'] < min_rating:
+            assert False
+        if i == (len(movies) - 1):
+            assert True
+
+
+def test_it_throws_TypeError_if_non_int_is_passed_as_min_rating_arg():
+    with pytest.raises(TypeError, match='Invalid min rating data type'):
+        get_movies(min_rating=[])
+    with pytest.raises(TypeError, match='Invalid min rating data type'):
+        get_movies(min_rating='')
+
+
+def test_it_throws_error_if_min_rating_arg_is_out_of_range_value():
+    with pytest.raises(ValueError, match='min rating out of range'):
+        get_movies(min_rating=11)
+
+
+def test_it_accepts_optional_location_argument_that_filters_movies_by_store():
+    movies = get_movies(location='Manchester')
+    for i in movies:
+        print(i)
+    assert len(movies) == 5
+    movies = get_movies(location='Leeds')
+    assert len(movies) == 5
