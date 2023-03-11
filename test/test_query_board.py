@@ -2,6 +2,7 @@ from src.query_board import (get_movies)
 import pytest
 
 
+# test get_movies
 def test_get_movies_return_a_list_of__dictionaries():
     movies = get_movies()
     assert isinstance(movies, list)
@@ -95,8 +96,35 @@ def test_it_throws_error_if_min_rating_arg_is_out_of_range_value():
 
 def test_it_accepts_optional_location_argument_that_filters_movies_by_store():
     movies = get_movies(location='Manchester')
-    for i in movies:
-        print(i)
+    print(type(movies[0]['cost']))
     assert len(movies) == 5
     movies = get_movies(location='Leeds')
     assert len(movies) == 5
+    movies = get_movies(location='Birmingham')
+    assert len(movies) == 4
+    movies = get_movies(location='Newcastle')
+    assert len(movies) == 3
+
+
+def test_it_throws_error_if_invalid_location_data_type_passed_on():
+    with pytest.raises(TypeError):
+        get_movies(location=1879)
+    with pytest.raises(Exception):
+        get_movies(location='abcdefghijklmnopqrstuskoskdai')
+
+
+# test apply discount
+def test_it_throws_TypeError_if_none_int_was_passed():
+    pass
+
+
+def test_it_throws_ValueError_if_out_of_range_was_passed():
+    pass
+
+
+def test_it_returns_a_list_of_dictionaries_with_new_discounted_data():
+    pass
+
+
+def test_it_update_movies_table_from_the_database():
+    pass

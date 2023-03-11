@@ -83,6 +83,7 @@ VALUES
 ('A Fish Called Wanda', '1988-07-07', 7, 1.50, null),
 ('Independance Day', '1996-07-03', 7, 1.00, '15');
 
+
 INSERT INTO stock
 (store_id, movie_id)
 VALUES
