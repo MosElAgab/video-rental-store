@@ -1,5 +1,11 @@
-from src.query_board import (get_movies)
+from src.query_board import (get_movies, apply_discount_to_all_movies)
 import pytest
+import pg8000.native as pg
+import getpass
+
+
+username = getpass.getuser()
+database = 'business_data'
 
 
 # test get_movies
@@ -115,16 +121,31 @@ def test_it_throws_error_if_invalid_location_data_type_passed_on():
 
 # test apply discount
 def test_it_throws_TypeError_if_none_int_was_passed():
-    pass
+    with pytest.raises(TypeError):
+        apply_discount_to_all_movies(0.5)
+    with pytest.raises(TypeError):
+        apply_discount_to_all_movies('sksk')
 
 
 def test_it_throws_ValueError_if_out_of_range_was_passed():
-    pass
+    with pytest.raises(ValueError):
+        apply_discount_to_all_movies(95)
+    with pytest.raises(ValueError):
+        apply_discount_to_all_movies(0)
+    with pytest.raises(ValueError):
+        apply_discount_to_all_movies(-10)
 
 
 def test_it_returns_a_list_of_dictionaries_with_new_discounted_data():
-    pass
+    discounted_movies = apply_discount_to_all_movies(50)
+    assert discounted_movies[0]['cost'] == 0.75
+    assert discounted_movies[24]['cost'] == 1
 
 
-def test_it_update_movies_table_from_the_database():
-    pass
+def test_it_has_an_optional_save_the_discounted_data_into_sale_table():
+    apply_discount_to_all_movies(50, save_database=True, table_name='Oct')
+    conn = pg.Connection(username, database=database)
+    new_data = conn.run('SELECT * FROM sale_Oct')
+    conn.close()
+    assert new_data[0][4] == 0.75
+    assert new_data[len(new_data) - 1][4] == 1

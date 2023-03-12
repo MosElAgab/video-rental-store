@@ -35,5 +35,20 @@ def get_movies(order='ASC', sort_by='title', min_rating=-1, location=None):
     return movies_dictionaries
 
 
-def apply_discount(percentage):
-    pass
+def apply_discount_to_all_movies(percentage, save_database=False, table_name=None):
+    if type(percentage) is not int:
+        raise TypeError
+    elif percentage > 90 or percentage <= 0:
+        raise ValueError
+    movies = get_movies()
+    for movie in movies:
+        movie['cost'] = movie['cost'] * (percentage/100)
+    if save_database is True and table_name is not None:
+        conn = pg.Connection(username, database=database)
+        conn.run('START TRANSACTION')
+        conn.run(f'DROP TABLE IF EXISTS sale_{pg.identifier(table_name)}; CREATE TABLE sale_{pg.identifier(table_name)} (movie_id SERIAL PRIMARY KEY, title VARCHAR,release_date DATE, rating INT, cost DECIMAL, classification VARCHAR)')
+        for movie in movies:
+            conn.run(f"INSERT INTO sale_{pg.identifier(table_name)} (title, release_date, rating, cost, classification) VALUES ({pg.literal(movie['title'])}, {pg.literal(movie['release_date'])}, {pg.literal(movie['rating'])}, {pg.literal(movie['cost'])}, {pg.literal(movie['classification'])})")
+        conn.run('COMMIT')
+        conn.close()
+    return movies
